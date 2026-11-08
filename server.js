@@ -1,49 +1,16 @@
 require("dotenv").config();
 
-
-const express = require("express");
-const dns = require('node:dns');
-const cors = require("cors");
+const dns = require("node:dns");
+const app = require("./app");
 const conectarBanco = require("./src/config/database");
 
-
-
-
+// Configuração de DNS para o MongoDB Atlas
 dns.setServers([
-   '8.8.8.8',
-   '8.8.4.4',
+  "8.8.8.8",
+  "8.8.4.4"
 ]);
 
-
-
-
-// Importar as rotas
-const vagaRoutes = require("./src/routes/vagaRoutes");
-const profissionalRoutes = require("./src/routes/profissionalRoutes");
-
-const app = express();
 const PORT = process.env.PORT || 3000;
-
-// Permitir requisições do Front-End React
-app.use(cors({
-  origin: "http://localhost:5174"
-}));
-
-// Permitir receber dados JSON
-app.use(express.json());
-
-// Rota inicial
-app.get("/", (req, res) => {
-  res.json({
-    mensagem: "API Trampo Certo funcionando!"
-  });
-});
-
-// Rotas do CRUD de vagas
-app.use("/api/vagas", vagaRoutes);
-
-// Rotas do CRUD de profissionais
-app.use("/api/profissionais", profissionalRoutes);
 
 // Iniciar a aplicação
 const iniciarServidor = async () => {
@@ -54,7 +21,7 @@ const iniciarServidor = async () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
   } catch (erro) {
-    console.error("Não foi possível iniciar a API.");
+    console.error("Não foi possível iniciar a API:", erro.message);
     process.exit(1);
   }
 };
