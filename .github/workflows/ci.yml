@@ -1,0 +1,65 @@
+name: CI - Trampo Certo
+
+on:
+  push:
+    branches:
+      - develop
+      - "feature/**"
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  testes:
+    name: Analise e Testes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar codigo do repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Executar ESLint
+        run: npm run lint
+
+      - name: Executar testes Jest e cobertura
+        run: npm run test:coverage
+
+      - name: Preparar Chrome
+        uses: browser-actions/setup-chrome@v2
+
+      - name: Iniciar servidor de demonstracao
+        run: |
+          DEMO_MODE=true node server.js > servidor.log 2>&1 &
+          echo $! > servidor.pid
+
+      - name: Aguardar servidor iniciar
+        run: |
+          for i in {1..30}; do
+            if curl --fail --silent http://localhost:3000/interface/ > /dev/null; then
+              echo "Servidor iniciado com sucesso!"
+              exit 0
+            fi
+            sleep 1
+          done
+          cat servidor.log
+          exit 1
+
+      - name: Executar teste Selenium
+        run: npm run test:selenium
+
+      - name: Salvar relatorio de cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-jest
+          path: coverage/
+          if-no-files-found: ignore
