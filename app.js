@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("node:path");
 
 // Importar as rotas
 const vagaRoutes = require("./src/routes/vagaRoutes");
@@ -14,6 +15,8 @@ app.use(cors({
 
 // Permitir receber dados JSON
 app.use(express.json());
+// Disponibilizar a página HTML para o Selenium
+app.use("/interface", express.static(path.join(__dirname, "public")));
 
 // Rota inicial
 app.get("/", (req, res) => {

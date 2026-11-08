@@ -12,10 +12,16 @@ dns.setServers([
 
 const PORT = process.env.PORT || 3000;
 
-// Iniciar a aplicação
+// Permite iniciar a interface sem MongoDB
+const modoDemonstracao = process.env.DEMO_MODE === "true";
+
 const iniciarServidor = async () => {
   try {
-    await conectarBanco();
+    if (modoDemonstracao) {
+      console.log("Modo demonstração: MongoDB desativado.");
+    } else {
+      await conectarBanco();
+    }
 
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
-    "test:coverage": "jest --coverage --runInBand"
+    "test:coverage": "jest --coverage --runInBand",
+    "lint": "eslint .",
+    "test:selenium": "node tests/interface.selenium.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,11 @@
     "mongoose": "^9.11.4"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
     "jest": "^30.5.2",
+    "selenium-webdriver": "^4.51.0",
     "supertest": "^7.3.2"
   }
 }
