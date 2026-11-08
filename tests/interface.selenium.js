@@ -1,12 +1,24 @@
 const { Builder, By, until } = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome");
 
 async function testarInterface() {
   let driver;
 
   try {
-    // Abre o navegador Chrome
+    // Configura o Chrome para rodar no GitHub Actions
+    const options = new chrome.Options();
+
+    options.addArguments(
+      "--headless=new",
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--window-size=1920,1080"
+    );
+
+    // Inicia o navegador Chrome
     driver = await new Builder()
       .forBrowser("chrome")
+      .setChromeOptions(options)
       .build();
 
     // Acessa a página do Trampo Certo
