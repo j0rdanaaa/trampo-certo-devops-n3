@@ -1,5 +1,5 @@
 
-# 🚀 Trampo Certo — DevOps N3
+# Trampo Certo — DevOps N3
 
 ### Avaliação N3 — Ferramentas de Implantação Contínua
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 📌 Sobre o projeto
+## Sobre o projeto
 
 O **Trampo Certo** é uma plataforma voltada à conexão entre profissionais freelancers e estabelecimentos do setor de hospitalidade, como restaurantes, hotéis, bares e empresas de eventos.
 
@@ -18,14 +18,14 @@ O objetivo é facilitar a contratação de profissionais para trabalhos temporá
 
 Nesta avaliação N3, utilizamos o backend do Trampo Certo como base para implementar práticas de **DevOps**, incluindo versionamento de código, testes automatizados, análise estática, integração contínua e implantação automatizada na nuvem.
 
-## 👥 Integrantes
+## Integrantes
 
 - Fernando Tolentino de Souza Hessmann Dutra
 - Jordana Gonçalves Góes
 - Mateus Suman Carpenter
 - Lucas Ricci
 
-## 🛠️ Tecnologias utilizadas
+## Tecnologias utilizadas
 
 ### Backend
 
@@ -53,7 +53,7 @@ Nesta avaliação N3, utilizamos o backend do Trampo Certo como base para implem
 - NGINX — proxy reverso e acesso HTTP
 - SSH — conexão segura para implantação automática
 
-## 📂 Estrutura do projeto
+## Estrutura do projeto
 
 ```text
 trampo-certo-devops-n3/
@@ -84,7 +84,7 @@ trampo-certo-devops-n3/
 └── README.md
 ```
 
-## ⚙️ Funcionalidades do backend
+## Funcionalidades do backend
 
 A API REST disponibiliza operações CRUD para vagas e profissionais.
 
@@ -106,7 +106,7 @@ A API REST disponibiliza operações CRUD para vagas e profissionais.
 | PUT | `/api/profissionais/:id` | Atualizar profissional |
 | DELETE | `/api/profissionais/:id` | Excluir profissional |
 
-## 🌿 Estratégia de versionamento
+## Estratégia de versionamento
 
 O projeto utiliza as seguintes branches:
 
@@ -127,7 +127,7 @@ O projeto utiliza as seguintes branches:
 
 Durante a avaliação, foi utilizada a branch `feature/testes-unitarios`, posteriormente integrada à `develop` por meio de Pull Request.
 
-## 🔄 Integração e implantação contínua
+## Integração e implantação contínua
 
 O projeto utiliza dois workflows do GitHub Actions.
 
@@ -169,7 +169,7 @@ O workflow utiliza secrets do GitHub para armazenar as informações necessária
 
 **Resultado:** deploy automático executado com sucesso.
 
-## 🧪 Testes automatizados
+## Testes automatizados
 
 ### Jest e Supertest
 
@@ -228,7 +228,7 @@ npm run lint
 
 **Resultado:** análise concluída com sucesso.
 
-## 💻 Executando o projeto localmente
+## Executando o projeto localmente
 
 ### Pré-requisitos
 
@@ -286,7 +286,7 @@ npm run test:selenium
 
 O teste Selenium utiliza o navegador Chrome em modo headless.
 
-## ☁️ Implantação na AWS EC2
+## Implantação na AWS EC2
 
 A aplicação foi implantada em uma instância AWS EC2 com Ubuntu.
 
@@ -344,7 +344,7 @@ A página apresenta:
 
 **Observação:** o endereço público poderá mudar se a instância EC2 receber outro IP.
 
-## 🔐 Segurança
+## Segurança
 
 As credenciais de conexão SSH utilizadas pelo pipeline de CD são armazenadas nos secrets do GitHub Actions:
 
@@ -356,7 +356,7 @@ Chaves privadas, senhas e credenciais de acesso não devem ser incluídas no rep
 
 O arquivo `.env` deve permanecer fora do versionamento.
 
-## 📊 Resultados da avaliação
+## Resultados da avaliação
 
 | Requisito | Resultado |
 |---|---|
@@ -374,7 +374,7 @@ O arquivo `.env` deve permanecer fora do versionamento.
 | Proxy reverso NGINX | Funcionando |
 | Acesso HTTP público | Validado |
 
-## ✅ Conclusão
+## Conclusão
 
 A avaliação N3 permitiu aplicar práticas de DevOps ao backend do projeto Trampo Certo.
 
