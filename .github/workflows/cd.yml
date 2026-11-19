@@ -1,4 +1,4 @@
-name: CD - Deploy Trampo Certo AWS
+﻿name: CD - Deploy Trampo Certo AWS
 
 on:
   push:
@@ -61,7 +61,7 @@ jobs:
 
             npm ci
 
-            PORT=3003 DEMO_MODE=true pm2 restart trampo-certo-n3 --update-env
+            PORT=3003 DEMO_MODE=false pm2 restart trampo-certo-n3 --update-env
 
             curl --fail --silent --show-error --retry 15 --retry-delay 2 --retry-connrefused --max-time 5 http://127.0.0.1:3003/interface/ > /dev/null
 
