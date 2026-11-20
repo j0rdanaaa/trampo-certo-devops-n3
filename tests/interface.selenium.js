@@ -12,7 +12,7 @@ async function testarInterface() {
       "--headless=new",
       "--no-sandbox",
       "--disable-dev-shm-usage",
-      "--window-size=1920,1080"
+      "--window-size=1920,1080",
     );
 
     // Inicia o navegador Chrome
@@ -25,10 +25,7 @@ async function testarInterface() {
     await driver.get("http://localhost:3000/interface/");
 
     // Aguarda o título aparecer
-    const titulo = await driver.wait(
-      until.elementLocated(By.css("h1")),
-      10000
-    );
+    const titulo = await driver.wait(until.elementLocated(By.css("h1")), 10000);
 
     const textoTitulo = await titulo.getText();
 
@@ -40,7 +37,7 @@ async function testarInterface() {
     const status = await driver.findElement(By.id("status"));
     const textoStatus = await status.getText();
 
-    if (textoStatus !== "Aplicação funcionando com sucesso!") {
+    if (textoStatus !== "Aplicação atualizada com sucesso na AWS!") {
       throw new Error("Mensagem de funcionamento incorreta!");
     }
 
